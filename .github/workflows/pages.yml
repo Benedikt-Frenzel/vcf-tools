@@ -18,13 +18,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
       - name: Validate static site
         run: |
           test -s index.html
           test -s styles.css
+          test -s theme.js
           test -f .nojekyll
           grep -q 'VCF Ports' index.html
           grep -q 'VCF Compliance' index.html
+
+      - name: Install test dependencies
+        run: npm ci
+
+      - name: Run accessibility tests
+        run: npm test
+
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:

@@ -9,7 +9,22 @@ The site uses vendored [Clarity Design](https://clarity.design/) assets and has 
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/pages.yml` publishes the repository root on pushes to `main`. In **Settings → Pages**, select **GitHub Actions** as the source.
+The workflow in `.github/workflows/pages.yml` publishes the repository root on pushes to `main`. In **Settings → Pages**, select **GitHub Actions** as the source. On every push and pull request it also installs the Node test deps and runs the accessibility suite.
+
+## Testing
+
+```bash
+npm install
+npm test
+```
+
+`test/a11y.test.js` loads `index.html` + `theme.js` in jsdom (offline) and checks:
+
+- axe-core WCAG 2 A/AA + best-practice (color-contrast disabled under jsdom)
+- document language, skip link, landmarks, and heading hierarchy
+- primary nav current-page markup
+- theme switcher `aria-pressed` state after click
+- named interactive controls and no positive `tabindex`
 
 ## Local preview
 
