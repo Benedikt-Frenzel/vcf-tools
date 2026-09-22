@@ -105,11 +105,9 @@ a:hover { color: var(--vcf-primary-strong); }
 .site-header .branding .nav-link { display: flex; align-items: center; gap: 10px; padding: 8px 10px; text-decoration: none; }
 .brand-mark {
   display: inline-flex; align-items: center; justify-content: center; flex: 0 0 36px;
-  width: 36px; height: 36px; border-radius: 50%; overflow: hidden;
-  background: var(--brand-gold-soft); color: var(--brand-forest); font-size: 17px;
-  border: 1px solid rgba(193, 156, 98, .55); box-shadow: 0 0 0 2px rgba(24, 36, 24, .35);
+  width: 36px; height: 36px; border-radius: var(--vcf-radius);
+  background: var(--brand-gold); color: var(--brand-forest); font-size: 17px;
 }
-.brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .brand-copy { display: inline-flex; flex-direction: column; line-height: 1.15; }
 .brand-copy .title { color: #fff; font-size: 17px; font-weight: 600; }
 .brand-copy .subtitle { color: rgba(243, 230, 204, .72); font-size: 11px; letter-spacing: .25px; }
@@ -145,17 +143,23 @@ main { max-width: 1280px; margin: 0 auto; padding: 42px 32px 64px; }
 .hero p { max-width: 62ch; margin: 0 0 24px; color: var(--vcf-muted); font-size: 16px; line-height: 1.7; }
 .btn { border-radius: var(--vcf-radius); font-weight: 500; }
 .hero-visual {
-  position: relative; display: flex; align-items: center; justify-content: center;
-  padding: 28px; background:
-    radial-gradient(circle at 50% 42%, rgba(193,156,98,.35), transparent 42%),
-    linear-gradient(180deg, #243024 0%, #182418 100%);
+  position: relative; display: flex; flex-direction: column; justify-content: center; gap: 38px;
+  padding: 50px; background: var(--brand-pine-soft);
 }
-.hero-visual img {
-  position: relative; z-index: 1; width: min(100%, 340px); aspect-ratio: 1;
-  border-radius: 50%; object-fit: cover;
-  border: 2px solid rgba(243, 230, 204, .55);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+.hero-visual::before {
+  content: ""; position: absolute; inset: 0; opacity: .45;
+  background-image: linear-gradient(var(--brand-border) 1px, transparent 1px), linear-gradient(90deg, var(--brand-border) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
+.stack-card {
+  position: relative; z-index: 1; padding: 21px 24px; background: var(--vcf-surface);
+  border: 1px solid var(--vcf-border); border-left: 4px solid var(--vcf-primary);
+  border-radius: var(--vcf-radius); box-shadow: 0 4px 12px rgba(24,36,24,.12);
+}
+.stack-card span { display: block; color: var(--vcf-muted); font-size: 11px; text-transform: uppercase; letter-spacing: .8px; }
+.stack-card strong { display: block; margin-top: 4px; font-size: 16px; font-weight: 600; }
+.stack-b { margin-left: 44px; border-left-color: var(--brand-brown); }
+.stack-line { position: absolute; z-index: 0; left: 50%; top: 42%; width: 2px; height: 78px; background: var(--vcf-primary); transform: rotate(-22deg); }
 .tools-section, .principles { padding-top: 64px; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 22px; }
 .section-heading h2 { margin: 5px 0 0; font-size: 28px; line-height: 1.2; font-weight: 600; }
