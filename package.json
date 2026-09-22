@@ -1,0 +1,17 @@
+{
+  "name": "vcf-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VCF Tools landing page - development/test tooling (the site itself is static HTML/CSS)",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "jsdom": "30.0.1"
+  }
+}
